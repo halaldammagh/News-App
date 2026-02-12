@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:news_app/utils/app_styles.dart' show AppStyles;
+
+import 'app_colors.dart';
+
+class AppThemes {
+  static final ThemeData lightTheme = ThemeData(
+    primaryColor: AppColors.whiteColor,
+    splashColor: AppColors.blackColor,
+    scaffoldBackgroundColor: AppColors.whiteColor,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.whiteColor,
+      iconTheme: IconThemeData(color: AppColors.blackColor),
+      centerTitle: true,
+    ),
+    textTheme: TextTheme(
+     labelLarge: AppStyles.bold16Black,
+      labelSmall:AppStyles.medium12Gray,
+      labelMedium: AppStyles.medium14Black,
+      headlineMedium: AppStyles.medium24Black,
+      headlineLarge: AppStyles.medium20Black
+    ),
+
+
+  );
+
+  static final ThemeData darkTheme = ThemeData(
+    scaffoldBackgroundColor: AppColors.blackColor,
+    primaryColor: AppColors.blackColor,
+    splashColor: AppColors.whiteColor,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.blackColor,
+      iconTheme: IconThemeData(color: AppColors.whiteColor),
+      centerTitle: true,
+    ),
+    textTheme: TextTheme(
+        labelLarge:AppStyles.bold16White,
+        labelSmall:AppStyles.medium12Gray,
+        labelMedium:AppStyles.medium14White,
+        headlineMedium:AppStyles.medium24White,
+        headlineLarge:AppStyles.medium20White
+
+    ),
+
+
+  );
+}
