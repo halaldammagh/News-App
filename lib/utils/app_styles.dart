@@ -7,6 +7,8 @@ import 'package:flutter/src/painting/text_style.dart';
 class AppStyles {
   static TextStyle medium20White = GoogleFonts.inter(
     fontSize: 20, fontWeight: FontWeight.w500, color: AppColors.whiteColor,);
+  static TextStyle bold20White = GoogleFonts.inter(
+    fontSize: 20, fontWeight: FontWeight.w700, color: AppColors.whiteColor,);
 
   static TextStyle medium20Black = GoogleFonts.inter(
     fontSize: 20, fontWeight: FontWeight.w500, color: AppColors.blackColor,);
@@ -22,9 +24,15 @@ class AppStyles {
 
   static TextStyle medium24Black = GoogleFonts.inter(
     fontSize: 24, fontWeight: FontWeight.w500, color: AppColors.blackColor,);
+  static TextStyle bold24Black = GoogleFonts.inter(
+    fontSize: 24, fontWeight: FontWeight.w700, color: AppColors.blackColor,);
 
   static TextStyle bold16Black = GoogleFonts.inter(
     fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.blackColor,);
+  static TextStyle bold40Black = GoogleFonts.inter(
+    fontSize: 40, fontWeight: FontWeight.w500, color: AppColors.blackColor,);
+  static TextStyle bold40White = GoogleFonts.inter(
+    fontSize: 40, fontWeight: FontWeight.w500, color: AppColors.whiteColor,);
 
     static TextStyle bold16White = GoogleFonts.inter(
     fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.whiteColor,);

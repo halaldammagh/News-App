@@ -13,5 +13,9 @@ class AppAssets {
   static const String scienceDark = 'assets/images/science_dark.png';
   static const String sportDark = 'assets/images/sport_dark.png';
   static const String technologyDark = 'assets/images/technology_dark.png';
+  static const String homeIcon = 'assets/icons/Home.png';
+  static const String showIcon = 'assets/icons/icon.png';
+  static const String langIcon = 'assets/icons/language.png';
+  static const String themeIcon = 'assets/icons/theme.png';
 
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../utils/shared_prefs.dart';
 
 class AppThemeProvider extends ChangeNotifier {
-  ThemeMode appTheme = ThemeMode.light;
+  ThemeMode appTheme = ThemeMode.dark;
 
   Future<void> loadTheme() async {
     final lastTheme = await SharedPrefs.getLastAppTheme();

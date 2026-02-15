@@ -20,7 +20,7 @@ class SharedPrefs {
 
   static Future<String> getLastAppTheme() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(SharedPrefs._themeKey) ?? 'light';
+    return prefs.getString(SharedPrefs._themeKey) ?? 'dark';
   }
 
 

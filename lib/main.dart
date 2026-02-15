@@ -1,15 +1,26 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:news_app/home/home_screen.dart';
 import 'package:news_app/providers/app_language_provider.dart';
 import 'package:news_app/providers/app_theme_provider.dart';
 import 'package:news_app/utils/app_routes.dart';
 import 'package:news_app/utils/app_theme.dart';
 import 'package:provider/provider.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 void main() {
   final langProvider = AppLanguageProvider();
   final themeProvider = AppThemeProvider();
+  WidgetsFlutterBinding.ensureInitialized();
+  timeago.setLocaleMessages('en', timeago.EnMessages());
+  timeago.setLocaleMessages('ar', timeago.ArMessages());
+  timeago.setLocaleMessages('ar_short', timeago.ArShortMessages());
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual,
+    overlays: [], // 👈 بيشيل الستاتس بار كامل
+  );
+
   runApp(
       EasyLocalization(
         supportedLocales: const [Locale('en'), Locale('ar')],
