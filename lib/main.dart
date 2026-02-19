@@ -47,6 +47,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "News App",
+      locale: context.locale,
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
+
+
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode:themeProvider.appTheme,

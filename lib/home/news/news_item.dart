@@ -73,7 +73,7 @@ class NewsItem extends StatelessWidget {
             style: Theme.of(context).textTheme.labelLarge,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
-          ),
+          ).tr(),
 
           SizedBox(height: height * 0.015),
 
@@ -84,13 +84,13 @@ class NewsItem extends StatelessWidget {
                   news.author ?? '',
                   style: Theme.of(context).textTheme.labelSmall,
                   overflow: TextOverflow.ellipsis,
-                ),
+                ).tr(),
               ),
               const SizedBox(width: 8),
               Text(
                 timeText,
                 style: Theme.of(context).textTheme.labelSmall,
-              ),
+              ).tr(),
             ],
           ),
         ],

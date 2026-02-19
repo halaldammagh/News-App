@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/api/api_manager.dart';
 import 'package:news_app/home/sources/source_widget.dart';
+import 'package:news_app/home/widget/category.dart';
 import 'package:news_app/home/widget/main_error_widget.dart';
 import 'package:news_app/home/widget/main_loading_widget.dart';
 import 'package:news_app/model/source_response.dart';
@@ -8,7 +9,8 @@ import 'package:news_app/utils/app_colors.dart';
 import 'package:news_app/utils/app_styles.dart';
 
 class CategoryDetails extends StatefulWidget {
-  const  CategoryDetails({super.key});
+  Category category;
+   CategoryDetails({super.key, required this.category});
 
   @override
   State<CategoryDetails> createState() => _CategoryDetailsState();
@@ -18,7 +20,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SourceResponse>(
-      future: ApiManager.getSources(),
+      future: ApiManager.getSources(widget.category.id),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
         //todo: loading
@@ -28,7 +30,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
             child: MainErrorWidget(
                 errorMessage: 'Something went wrong',
                 onPressed: (){
-                  ApiManager.getSources();
+                  ApiManager.getSources(widget.category.id);
                   setState(() {
 
                   });
@@ -39,7 +41,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
         if(snapshot.data?.status != 'ok'){
           return MainErrorWidget(errorMessage: snapshot.data!.message!,
               onPressed:(){
-            ApiManager.getSources();
+            ApiManager.getSources(widget.category.id);
             setState(() {
 
             });
@@ -47,11 +49,12 @@ class _CategoryDetailsState extends State<CategoryDetails> {
         }
 
         //todo:  success
-        var sourcesList = snapshot.data?.sources ?? [];
-        return SourceWidget(sourcesList: sourcesList);
+        var sourcesList = snapshot.data?.sources??[];
+
+          return SourceWidget(sourcesList: sourcesList);
+        }
 
 
-      },
     );
   }
 }

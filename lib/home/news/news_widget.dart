@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:news_app/api/api_manager.dart';
 import 'package:news_app/home/news/news_item.dart';
 import 'package:news_app/home/widget/main_error_widget.dart';
@@ -50,21 +51,27 @@ class _NewsWidgetState extends State<NewsWidget> {
 
           //todo:  success
            var newsList = snapShot.data?.articles??[];
-           return ListView.separated(
-             padding: EdgeInsets.symmetric(vertical: height*0.01),
-             separatorBuilder: (context, index) {
-               return Container(
-                 color: AppColors.transParentColor,
-                 height: height*0.0002,
-               );
-             },
-               itemBuilder:(context, index) {
-                 return NewsItem(news:newsList[index] );
-
-               },
-           itemCount: newsList.length,
-           );
-
+          if(newsList.isEmpty){
+            return Center(
+              child: Text('No Sources Item Found',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            );
+          }else {
+            return ListView.separated(
+              padding: EdgeInsets.symmetric(vertical: height * 0.01),
+              separatorBuilder: (context, index) {
+                return Container(
+                  color: AppColors.transParentColor,
+                  height: height * 0.0002,
+                );
+              },
+              itemBuilder: (context, index) {
+                return NewsItem(news: newsList[index]);
+              },
+              itemCount: newsList.length,
+            );
+          }
         }
         );
   }
