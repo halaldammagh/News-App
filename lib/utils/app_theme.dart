@@ -23,13 +23,15 @@ class AppThemes {
       labelMedium: AppStyles.medium14Black,
       headlineMedium: AppStyles.medium24Black,
       headlineLarge: AppStyles.medium20Black,
-      bodyLarge: AppStyles.bold40White
+      bodyLarge: AppStyles.bold40White,
+      bodyMedium: AppStyles.medium14White,
     ),
 
 
   );
 
   static final ThemeData darkTheme = ThemeData(
+
     scaffoldBackgroundColor: AppColors.blackColor,
     primaryColor: AppColors.blackColor,
     splashColor: AppColors.whiteColor,
@@ -47,7 +49,8 @@ class AppThemes {
         labelMedium:AppStyles.medium14White,
         headlineMedium:AppStyles.medium24White,
         headlineLarge:AppStyles.medium20White,
-        bodyLarge: AppStyles.bold40Black
+        bodyLarge: AppStyles.bold40Black,
+      bodyMedium: AppStyles.medium14Black
 
 
     ),

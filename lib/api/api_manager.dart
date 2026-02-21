@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:news_app/api/api_constants.dart';
 import 'package:news_app/api/end_points.dart';
@@ -7,26 +6,22 @@ import 'package:news_app/model/news_response.dart';
 import 'package:news_app/model/source_response.dart';
 
 class ApiManager {
-  /*https://newsapi.org/v2/top-headlines/sources?apiKey=cf44892e9570475e9f3f85d5a845d682 */
-  static Future<SourceResponse> getSources(String categoryId)async{
-    Uri url = Uri.https(ApiConstants.baseUrl,EndPoints.sourceApi, {
-      'apiKey': ApiConstants.apiKey,
-      'category' : categoryId
-
-    }
+  static Future<SourceResponse> getSources(String categoryId) async {
+    Uri url = Uri.https(
+      ApiConstants.baseUrl,
+      EndPoints.sourceApi,
+      {
+        'apiKey': ApiConstants.apiKey,
+        'category': categoryId,
+      },
     );
-    try{
-      var response =  await http.get(url);
-    var responseBody = response.body; ///String
-    /// String => json
-    var json =  jsonDecode(responseBody);
-    /// json => object
-    return SourceResponse.fromJson(json);
 
-    // return SourceResponse.fromJson(jsonDecode(response.body));
-    // هاد اختصار للاربع سطور الي فوق
-    }catch(e){
-       rethrow ;
+    try {
+      var response = await http.get(url);
+      var json = jsonDecode(response.body);
+      return SourceResponse.fromJson(json);
+    } catch (e) {
+      rethrow;
       /*تخيّلي الخطأ ورقة مكتوب عليها:
 وين صار الخطأ + تفاصيله.
 
@@ -43,19 +38,46 @@ class ApiManager {
 أحياناً بيبين كأن الخطأ صار داخل catch مو بالمكان الحقيقي.
 
 استخدميه لما بدك ترمي خطأ جديد أو تغيّري نوعه/رسالة الخطأ.*/
+
     }
   }
 
-  /* https://newsapi.org/v2/everything?q=bitcoin&apiKey=cf44892e9570475e9f3f85d5a845d682*/
-  static Future<NewsResponse> getNewsBySourceId(String sourceId)async{
-  Uri url = Uri.https(ApiConstants.baseUrl, EndPoints.newsApi,
-      {'apiKey':ApiConstants.apiKey,
-        'sources':sourceId
-      });
-  var response = await http.get(url);
-  var responseBody = response.body;
-  var json = jsonDecode(responseBody);
-  return NewsResponse.fromJson( json);
+  // ✅ البحث الصحيح (everything + q) ويرجع NewsResponse
+  static Future<NewsResponse> searchNews(String query) async {
+    Uri url = Uri.https(
+      ApiConstants.baseUrl,
+      EndPoints.newsApi, // أو EndPoints.everythingApi
+      {
+        'apiKey': ApiConstants.apiKey,
+        'q': query,
+      },
+    );
+
+    try {
+      var response = await http.get(url);
+      var json = jsonDecode(response.body);
+      return NewsResponse.fromJson(json);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  static Future<NewsResponse> getNewsBySourceId(String sourceId, {int page = 1 ,  int pageSize = 10,
+  }) async {
+    Uri url = Uri.https(
+      ApiConstants.baseUrl,
+      EndPoints.newsApi,
+      {
+        'apiKey': ApiConstants.apiKey,
+        'sources': sourceId,
+        'page': '$page',
+        'pageSize': '$pageSize',
+      },
+    );
+
+    var response = await http.get(url);
+    var json = jsonDecode(response.body);
+    return NewsResponse.fromJson(json);
   }
 }
 

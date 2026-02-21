@@ -17,5 +17,9 @@ class AppAssets {
   static const String showIcon = 'assets/icons/icon.png';
   static const String langIcon = 'assets/icons/language.png';
   static const String themeIcon = 'assets/icons/theme.png';
+  static const String searchIcon = 'assets/icons/Search.png';
+  static const String lightSearchIcon = 'assets/icons/light_search.png';
+  static const String lightCloseIcon = 'assets/icons/light_close.png';
+  static const String closeIcon = 'assets/icons/close.png';
 
 }

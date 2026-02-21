@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:news_app/api/api_manager.dart';
 import 'package:news_app/home/sources/source_widget.dart';
@@ -8,6 +9,8 @@ import 'package:news_app/model/source_response.dart';
 import 'package:news_app/utils/app_colors.dart';
 import 'package:news_app/utils/app_styles.dart';
 
+import '../../model/news_response.dart';
+
 class CategoryDetails extends StatefulWidget {
   Category category;
    CategoryDetails({super.key, required this.category});
@@ -17,6 +20,7 @@ class CategoryDetails extends StatefulWidget {
 }
 
 class _CategoryDetailsState extends State<CategoryDetails> {
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SourceResponse>(
