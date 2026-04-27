@@ -1,3 +1,6 @@
+<img width="1920" height="1440" alt="124shots_so" src="https://github.com/user-attachments/assets/3d464be8-fd3d-475e-9982-e8a9e273b065" />
+
+
 # 📰 News App
 
 A modern news application built using Flutter, designed to provide users with real-time news updates from various sources through a clean and user-friendly interface.
